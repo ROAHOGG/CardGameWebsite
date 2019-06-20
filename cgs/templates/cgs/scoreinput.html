@@ -1,0 +1,12 @@
+{% extends "cgs/base.html" %}
+{% block body%}
+
+
+<form method=post>
+{% crsf_token%}
+
+{{ form.non_field_errors }}
+
+
+{% endfor %}
+{% endblock body%}

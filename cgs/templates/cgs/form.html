@@ -1,0 +1,12 @@
+{% extends "cgs/base.html" %}
+{% block title%} Entry Form {% endblock title %}
+{% block body %}
+<form method=post>
+  {% csrf_token %}
+ {{form.as_p}}
+ <label for="players">Players in this game</label>
+ <input type="text" name="players" value="1" id='playersingame'>
+ <br>
+ <input type=submit>
+</form>
+{% endblock body%}

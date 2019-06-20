@@ -1,10 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
 class User(models.Model):
     userName = models.CharField(max_length=30)
     password = models.CharField(max_length=100)
-    # related Player
+    # related Player?
 
 class Player(models.Model):
     MALE = 'M'
@@ -25,21 +25,21 @@ class Player(models.Model):
                                 default=OTHER)
 
 
-class Games(models.Model):
+class Game(models.Model):
     location = models.CharField(max_length=30)
-    datePlayed = models.DateTimeField()
+    datePlayed = models.DateField()
     dateAdded = models.DateTimeField(auto_now_add=True)
-    addedBy = models.ForeignKey(User, on_delete=models.PROTECT)
+    #addedBy = models.ForeignKey(User, on_delete=models.PROTECT)
 
 
-class Scores(models.Model):
+class Score(models.Model):
     # this model will be used to hold scores:
     # scores are unique with respect to player and Games
     # this should be all thats needed to build games from
 
 
-    game = models.ForeignKey(Games, on_delete=models.CASCADE)
-    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.PROTECT)
+    player = models.ForeignKey(Player, on_delete=models.PROTECT)
     score1 = models.IntegerField(verbose_name='Round 1 Score')
     score2 = models.IntegerField(verbose_name='Round 2 Score')
     score3 = models.IntegerField(verbose_name='Round 3 Score')

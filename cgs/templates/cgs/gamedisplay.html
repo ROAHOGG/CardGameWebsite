@@ -1,0 +1,10 @@
+{% extends "cgs/base.html" %}
+{% block body%}
+
+{% for game in games %}
+<div>
+<a href="gamedisplay/{{ game.pk }}">Game #{{game.pk}} </a>,  {{ game.location }}, {{game.dateAdded}} , {{game.datePlayed}}.
+  <br>
+  </div>
+{% endfor %}
+{% endblock body%}
